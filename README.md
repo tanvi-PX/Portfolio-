@@ -1,5 +1,4 @@
 # Portfolio-
-<p>This is my first repository
-  font color:pink;</p>
-<br>
+This is my first repository
+  <br>
 Myself Tanvi 
