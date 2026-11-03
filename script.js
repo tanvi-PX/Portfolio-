@@ -1,56 +1,65 @@
 // Welcome message
-console.log("Welcome to Tanvi's Portfolio!");
-
-// Dynamic typing effect
-const roles = [
-    "Aspiring Developer",
-    "Tech Enthusiast",
-    "Creative Thinker",
-    "Future Innovator"
+// Typing animation
+const words = [
+  "Aspiring Developer",
+  "Tech Explorer",
+  "Creative Thinker"
 ];
 
-let roleIndex = 0;
+let wordIndex = 0;
 let charIndex = 0;
 let deleting = false;
 
-const roleElement = document.getElementById("role");
+const typingElement = document.querySelector("#typing");
 
 function typeEffect() {
-    if (!roleElement) return;
+  if (!typingElement) return;
 
-    const currentRole = roles[roleIndex];
+  const word = words[wordIndex];
 
-    if (!deleting) {
-        roleElement.textContent =
-            currentRole.substring(0, charIndex + 1);
+  typingElement.textContent = word.substring(0, charIndex);
 
-        charIndex++;
+  if (!deleting) {
+    charIndex++;
 
-        if (charIndex === currentRole.length) {
-            deleting = true;
-            setTimeout(typeEffect, 1200);
-            return;
-        }
-    } else {
-        roleElement.textContent =
-            currentRole.substring(0, charIndex - 1);
-
-        charIndex--;
-
-        if (charIndex === 0) {
-            deleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-        }
+    if (charIndex > word.length) {
+      deleting = true;
+      setTimeout(typeEffect, 1000);
+      return;
     }
+  } else {
+    charIndex--;
 
-    setTimeout(typeEffect, deleting ? 50 : 100);
+    if (charIndex < 0) {
+      deleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      charIndex = 0;
+    }
+  }
+
+  setTimeout(typeEffect, deleting ? 50 : 100);
 }
 
 typeEffect();
 
-// Current year in footer
-const yearElement = document.getElementById("year");
+// Scroll reveal animation
+const sections = document.querySelectorAll("section, .card");
 
-if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
+sections.forEach(item => item.classList.add("reveal"));
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.15 });
+
+sections.forEach(item => observer.observe(item));
+
+// Automatic footer year
+const year = document.querySelector("#year");
+
+if (year) {
+  year.textContent = new Date().getFullYear();
 }
