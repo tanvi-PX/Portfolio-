@@ -140,3 +140,88 @@ footer {
     padding: 65px 7%;
   }
 }
+
+/* 3D BUTTON DESIGN */
+button,
+.btn {
+  display: inline-block;
+  padding: 13px 28px;
+  background: linear-gradient(145deg, #91aaff, #5578e8);
+  color: #080b16;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 0 #304b9c,
+    0 10px 20px rgba(85, 120, 232, 0.25);
+
+  transition: all 0.25s ease;
+  transform: translateY(0);
+}
+
+button:hover,
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 10px 0 #304b9c,
+    0 18px 25px rgba(85, 120, 232, 0.35);
+}
+
+button:active,
+.btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #304b9c;
+}
+
+/* GITHUB AND LINKEDIN LINKS */
+.social-links a {
+  display: inline-block;
+  margin: 10px 12px 10px 0;
+  padding: 11px 22px;
+  color: #91aaff;
+  background: #11182b;
+  border: 1px solid #5578e8;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: white;
+  background: #5578e8;
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 8px 20px rgba(85, 120, 232, 0.3);
+}
+
+/* NAVIGATION HOVER */
+nav a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: #7c9cff;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* KEYBOARD ACCESSIBILITY */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #91aaff;
+  outline-offset: 4px;
+}
