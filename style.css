@@ -225,3 +225,157 @@ button:focus-visible {
   outline: 3px solid #91aaff;
   outline-offset: 4px;
 }
+
+/* HERO LAYOUT */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  min-height: 75vh;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.intro-tag {
+  color: #7c9cff;
+  letter-spacing: 3px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.hero-content h1 {
+  margin-top: 15px;
+}
+
+.hero-content h2 {
+  margin-top: 15px;
+  color: #91aaff;
+}
+
+/* PROFILE IMAGE */
+.hero-visual {
+  flex: 1;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.profile-frame {
+  width: 240px;
+  height: 240px;
+  padding: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c9cff, #a855f7, #00d4ff);
+  animation: profileGlow 4s ease-in-out infinite;
+  z-index: 2;
+}
+
+.profile-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #080b16;
+}
+
+@keyframes profileGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px #7c9cff;
+  }
+  50% {
+    box-shadow: 0 0 40px #a855f7;
+  }
+}
+
+/* FLOATING LABELS */
+.floating-card {
+  position: absolute;
+  padding: 12px 17px;
+  background: #151e35;
+  border: 1px solid #465b91;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px #0006;
+  z-index: 3;
+  animation: float 3s ease-in-out infinite;
+}
+
+.card-one {
+  top: 45px;
+  right: 0;
+}
+
+.card-two {
+  bottom: 45px;
+  left: 0;
+  animation-delay: 1s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* ANIMATED ORBIT */
+.orbit {
+  position: absolute;
+  border: 1px dashed #657fc9;
+  border-radius: 50%;
+  animation: rotate 12s linear infinite;
+}
+
+.orbit-one {
+  width: 320px;
+  height: 320px;
+}
+
+.orbit-two {
+  width: 370px;
+  height: 370px;
+  animation-direction: reverse;
+  animation-duration: 18s;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 700px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 40px;
+  }
+
+  .hero-visual {
+    width: 100%;
+    min-height: 400px;
+  }
+
+  .card-one {
+    right: 0;
+  }
+
+  .card-two {
+    left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-frame,
+  .floating-card,
+  .orbit {
+    animation: none;
+  }
+}
